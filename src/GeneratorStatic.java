@@ -1,43 +1,46 @@
-
 import java.nio.charset.Charset;
 import java.util.*;
 
 public class GeneratorStatic {
-    private static Random rand = new Random();
+    private Random rand = new Random();
 
-    public static void setRand(long seed){
+    public void setRand(long seed){
         rand.setSeed(seed);
     }
 
     /**Function int getRandomString()
-     * Return
+     * Generate a random String with maximum length of 15
      *
      * @return      random String with random length with maximum length 15
      */
-    public static String getRandomString() {
+    public String getRandomString() {
         byte[] array = new byte[rand.nextInt(15)];
         rand.nextBytes(array);
         return new String(array, Charset.forName("UTF-8"));
     }
 
     /**Function int getRandomNumber
-     * Return a random number
+     * Generate a random number
      *
      * @return      random number
      */
-    public static int getRandomNumber() {
+    public int getRandomNumber() {
         return rand.nextInt();
     }
 
     /**Function int getRandomNumber(int)
-     * Return a random number between 0 and the max setting (exclusive).
+     * Generate a random number between 0 and the max setting (exclusive).
      *
      * @param max   maximal bound (exclusive)
      * @return      random number between 0 and the max
      */
-    public static int getRandomNumber(int max) {
+    public int getRandomNumber(int max) {
         return rand.nextInt(max);
     }
 
-    GeneratorStatic() {}
+    GeneratorStatic(){}
+
+    GeneratorStatic(long seed){
+        this.setRand(seed);
+    }
 }
